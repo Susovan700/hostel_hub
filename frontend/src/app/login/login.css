@@ -1,0 +1,566 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* HIDE SCROLLBAR */
+
+::-webkit-scrollbar{
+  width:0;
+  height:0;
+}
+
+html{
+  scrollbar-width:none;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.lg-auth-container{
+
+  min-height:100vh;
+  width:100%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:120px 20px 40px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  font-family:Inter,sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(37,99,235,0.12),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
+      rgba(124,58,237,0.12),
+      transparent 35%
+    ),
+
+    #f8fafc;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.lg-vnb-nav{
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:24px 8%;
+
+  z-index:10;
+}
+
+.lg-vnb-logo{
+
+  font-size:1.8rem;
+  font-weight:800;
+
+  color:#0f172a;
+
+  cursor:pointer;
+
+  user-select:none;
+}
+
+.lg-vnb-logo span{
+  color:#2563eb;
+}
+
+.lg-vnb-right{
+
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+}
+
+.lg-vnb-tag{
+
+  background:#e2e8f0;
+
+  color:#475569;
+
+  padding:6px 14px;
+
+  border-radius:8px;
+
+  font-size:0.72rem;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+}
+
+.lg-vnb-home{
+
+  text-decoration:none;
+
+  color:#2563eb;
+
+  font-weight:700;
+
+  transition:0.3s ease;
+}
+
+.lg-vnb-home:hover{
+  opacity:0.8;
+}
+
+/* =========================
+   AUTH CARD
+========================= */
+
+.lg-auth-card{
+
+  width:100%;
+  max-width:500px;
+
+  background:white;
+
+  padding:42px;
+
+  border-radius:32px;
+
+  border:1px solid #e2e8f0;
+
+  box-shadow:
+    0 20px 40px
+    rgba(15,23,42,0.08);
+
+  animation:lgFade 0.4s ease;
+}
+
+/* =========================
+   BRAND LOGO
+========================= */
+
+.lg-brand-logo{
+
+  font-size:1.7rem;
+  font-weight:800;
+
+  color:#0f172a;
+
+  margin-bottom:24px;
+
+  text-align:center;
+}
+
+.lg-brand-logo span{
+  color:#2563eb;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.lg-auth-header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.lg-auth-header h2{
+
+  font-size:2rem;
+  font-weight:800;
+
+  color:#0f172a;
+
+  margin-bottom:10px;
+}
+
+.lg-auth-header p{
+
+  color:#64748b;
+
+  line-height:1.7;
+
+  font-size:0.95rem;
+}
+
+/* =========================
+   ROLE CARDS
+========================= */
+
+.lg-role-grid{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:16px;
+}
+
+/* CARD */
+
+.lg-role-card{
+
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+
+  padding:18px;
+
+  border-radius:22px;
+
+  border:1.5px solid #f1f5f9;
+
+  background:#ffffff;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+}
+
+.lg-role-card:hover{
+
+  transform:translateY(-3px);
+
+  border-color:#2563eb;
+
+  background:#f8fbff;
+
+  box-shadow:
+    0 15px 30px
+    rgba(37,99,235,0.08);
+}
+
+/* ICON */
+
+.lg-role-icon{
+
+  width:55px;
+  height:55px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border-radius:16px;
+
+  background:#f8fafc;
+
+  font-size:1.5rem;
+}
+
+/* TEXT */
+
+.lg-role-text h3{
+
+  font-size:1rem;
+
+  font-weight:700;
+
+  color:#0f172a;
+
+  margin-bottom:4px;
+}
+
+.lg-role-text p{
+
+  font-size:0.85rem;
+
+  color:#64748b;
+
+  line-height:1.5;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.lg-form{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:20px;
+
+  animation:lgSlide 0.4s ease;
+}
+
+/* INPUT GROUP */
+
+.lg-input-group{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+
+  text-align:left;
+}
+
+/* LABEL */
+
+.lg-input-group label{
+
+  font-size:0.92rem;
+
+  font-weight:700;
+
+  color:#334155;
+
+  margin-left:4px;
+}
+
+/* INPUT */
+
+.lg-input-group input{
+
+  width:100%;
+
+  padding:16px 18px;
+
+  border-radius:16px;
+
+  border:1.5px solid #e2e8f0;
+
+  background:#f8fafc !important;
+
+  outline:none;
+
+  font-size:1rem;
+
+  color:#0f172a !important;
+
+  transition:0.3s ease;
+
+  appearance:none;
+}
+
+/* PLACEHOLDER */
+
+.lg-input-group input::placeholder{
+  color:#94a3b8;
+}
+
+/* FOCUS */
+
+.lg-input-group input:focus{
+
+  border-color:#2563eb;
+
+  background:#f8fafc !important;
+
+  color:#0f172a !important;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(37,99,235,0.1);
+}
+
+/* AUTOFILL FIX */
+
+.lg-input-group input:-webkit-autofill,
+.lg-input-group input:-webkit-autofill:hover,
+.lg-input-group input:-webkit-autofill:focus,
+.lg-input-group input:-webkit-autofill:active{
+
+  -webkit-box-shadow:
+    0 0 0 1000px #f8fafc inset !important;
+
+  -webkit-text-fill-color:
+    #0f172a !important;
+
+  caret-color:#0f172a !important;
+
+  border:1.5px solid #e2e8f0 !important;
+
+  transition:
+    background-color 9999s ease-in-out 0s;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.lg-submit-btn{
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6
+    );
+
+  color:white;
+
+  font-size:1rem;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+
+  box-shadow:
+    0 15px 30px
+    rgba(37,99,235,0.2);
+}
+
+.lg-submit-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 20px 35px
+    rgba(37,99,235,0.3);
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.lg-back-link{
+
+  margin-top:8px;
+
+  border:none;
+
+  background:none;
+
+  color:#64748b;
+
+  cursor:pointer;
+
+  font-size:0.9rem;
+
+  font-weight:700;
+
+  transition:0.3s ease;
+}
+
+.lg-back-link:hover{
+  color:#2563eb;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.lg-auth-footer{
+
+  margin-top:28px;
+
+  text-align:center;
+
+  color:#64748b;
+
+  font-size:0.95rem;
+}
+
+.lg-auth-footer a{
+
+  color:#2563eb;
+
+  text-decoration:none;
+
+  font-weight:700;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes lgFade{
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes lgSlide{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .lg-auth-card{
+    padding:32px 24px;
+    border-radius:24px;
+  }
+
+  .lg-vnb-nav{
+    padding:20px 6%;
+  }
+
+  .lg-auth-header h2{
+    font-size:1.7rem;
+  }
+}
+
+@media(max-width:480px){
+
+  .lg-auth-container{
+    padding-top:100px;
+  }
+
+  .lg-vnb-logo{
+    font-size:1.5rem;
+  }
+
+  .lg-vnb-home{
+    font-size:0.85rem;
+  }
+
+  .lg-auth-card{
+    padding:28px 20px;
+  }
+
+  .lg-vnb-tag{
+    display:none;
+  }
+}

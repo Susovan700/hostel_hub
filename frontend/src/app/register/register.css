@@ -1,0 +1,460 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* HIDE SCROLLBAR */
+
+::-webkit-scrollbar{
+  width:0;
+  height:0;
+}
+
+html{
+  scrollbar-width:none;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.rg-auth-container{
+
+  min-height:100vh;
+  width:100%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:120px 20px 40px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  font-family:Inter,sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(37,99,235,0.12),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at bottom left,
+      rgba(124,58,237,0.12),
+      transparent 35%
+    ),
+
+    #f8fafc;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.rg-vnb-nav{
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:24px 8%;
+
+  z-index:10;
+}
+
+.rg-vnb-logo{
+
+  font-size:1.8rem;
+  font-weight:800;
+
+  color:#0f172a;
+
+  cursor:pointer;
+
+  user-select:none;
+}
+
+.rg-vnb-logo span{
+  color:#2563eb;
+}
+
+.rg-vnb-login{
+
+  text-decoration:none;
+
+  color:#64748b;
+
+  font-weight:700;
+
+  transition:0.3s ease;
+}
+
+.rg-vnb-login:hover{
+  color:#2563eb;
+}
+
+/* =========================
+   AUTH CARD
+========================= */
+
+.rg-auth-card{
+
+  width:100%;
+  max-width:520px;
+
+  background:white;
+
+  padding:42px;
+
+  border-radius:32px;
+
+  border:1px solid #e2e8f0;
+
+  box-shadow:
+    0 20px 40px
+    rgba(15,23,42,0.08);
+
+  animation:rgFade 0.4s ease;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.rg-auth-header{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+.rg-auth-header h2{
+
+  font-size:2rem;
+  font-weight:800;
+
+  color:#0f172a;
+
+  margin-bottom:10px;
+}
+
+.rg-auth-header p{
+
+  color:#64748b;
+
+  line-height:1.7;
+
+  font-size:0.95rem;
+}
+
+/* =========================
+   ROLE TOGGLE
+========================= */
+
+.rg-role-toggle{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:8px;
+
+  background:#f1f5f9;
+
+  padding:8px;
+
+  border-radius:20px;
+
+  margin-bottom:30px;
+}
+
+.rg-role-toggle button{
+
+  border:none;
+
+  padding:14px 10px;
+
+  border-radius:14px;
+
+  background:transparent;
+
+  cursor:pointer;
+
+  font-size:0.92rem;
+
+  font-weight:700;
+
+  color:#64748b;
+
+  transition:0.3s ease;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:8px;
+}
+
+/* ACTIVE BUTTON */
+
+.rg-role-toggle button.rg-active{
+
+  background:white;
+
+  color:#2563eb;
+
+  box-shadow:
+    0 6px 18px
+    rgba(0,0,0,0.08);
+
+  transform:translateY(-2px);
+}
+
+/* HOVER */
+
+.rg-role-toggle button:hover{
+  color:#2563eb;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.rg-form{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:20px;
+}
+
+.rg-input-group{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+}
+
+/* LABEL */
+
+.rg-input-group label{
+
+  font-size:0.92rem;
+
+  font-weight:700;
+
+  color:#334155;
+
+  margin-left:4px;
+}
+
+/* INPUT */
+
+.rg-input-group input{
+
+  width:100%;
+
+  padding:16px 18px;
+
+  border-radius:16px;
+
+  border:1.5px solid #e2e8f0;
+
+  background:#f8fafc !important;
+
+  outline:none;
+
+  font-size:1rem;
+
+  color:#0f172a !important;
+
+  transition:0.3s ease;
+
+  appearance:none;
+}
+
+/* PLACEHOLDER */
+
+.rg-input-group input::placeholder{
+  color:#94a3b8;
+}
+
+/* FOCUS */
+
+.rg-input-group input:focus{
+
+  border-color:#2563eb;
+
+  background:#f8fafc !important;
+
+  color:#0f172a !important;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(37,99,235,0.1);
+}
+
+/* AUTOFILL FIX */
+
+.rg-input-group input:-webkit-autofill,
+.rg-input-group input:-webkit-autofill:hover,
+.rg-input-group input:-webkit-autofill:focus,
+.rg-input-group input:-webkit-autofill:active{
+
+  -webkit-box-shadow:
+    0 0 0 1000px #f8fafc inset !important;
+
+  -webkit-text-fill-color:
+    #0f172a !important;
+
+  caret-color:#0f172a !important;
+
+  border:1.5px solid #e2e8f0 !important;
+
+  transition:
+    background-color 9999s ease-in-out 0s;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.rg-submit-btn{
+
+  margin-top:10px;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6
+    );
+
+  color:white;
+
+  font-size:1rem;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+
+  box-shadow:
+    0 15px 30px
+    rgba(37,99,235,0.2);
+}
+
+.rg-submit-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 20px 35px
+    rgba(37,99,235,0.3);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.rg-auth-footer{
+
+  margin-top:28px;
+
+  text-align:center;
+
+  color:#64748b;
+
+  font-size:0.95rem;
+}
+
+.rg-auth-footer a{
+
+  color:#2563eb;
+
+  text-decoration:none;
+
+  font-weight:700;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes rgFade{
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .rg-auth-card{
+    padding:32px 24px;
+    border-radius:24px;
+  }
+
+  .rg-vnb-nav{
+    padding:20px 6%;
+  }
+
+  .rg-auth-header h2{
+    font-size:1.7rem;
+  }
+}
+
+@media(max-width:480px){
+
+  .rg-auth-container{
+    padding-top:100px;
+  }
+
+  .rg-vnb-logo{
+    font-size:1.5rem;
+  }
+
+  .rg-vnb-login{
+    font-size:0.85rem;
+  }
+
+  .rg-auth-card{
+    padding:28px 20px;
+  }
+
+  .rg-role-toggle{
+    grid-template-columns:1fr;
+  }
+}

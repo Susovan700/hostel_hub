@@ -1,0 +1,48 @@
+.lv-app-container { display: flex; height: 100vh; overflow: hidden; background: #f8fafc; }
+.lv-main-wrapper { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.lv-scroll-body { flex: 1; overflow-y: auto; padding: 40px; }
+
+.lv-header { margin-bottom: 30px; }
+.lv-header h1 { font-size: 2rem; color: #0f172a; margin-bottom: 5px; }
+.lv-header p { color: #64748b; }
+
+.lv-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; }
+
+.lv-form-card, .lv-status-card { 
+  background: white; padding: 30px; border-radius: 24px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; 
+}
+
+.lv-form-card h3, .lv-status-card h3 { margin-bottom: 25px; color: #1e293b; font-size: 1.25rem; }
+
+.lv-input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.lv-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.lv-input-group label { font-weight: 700; font-size: 0.85rem; color: #475569; }
+.lv-input-group input, .lv-input-group select, .lv-input-group textarea { 
+  padding: 12px; border-radius: 12px; border: 1.5px solid #e2e8f0; font-family: inherit; 
+}
+
+.lv-submit-btn { 
+  width: 100%; padding: 16px; background: #2563eb; color: white; 
+  border: none; border-radius: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; 
+}
+
+.lv-submit-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+
+.lv-history-list { display: flex; flex-direction: column; gap: 15px; }
+.lv-history-item { 
+  padding: 20px; background: #f8fafc; border-radius: 18px; 
+  border: 1px solid #f1f5f9; display: flex; justify-content: space-between; 
+}
+
+.lv-status-pill { 
+  display: inline-block; padding: 4px 10px; border-radius: 20px; 
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; 
+}
+.lv-status-pill.approved { background: #dcfce7; color: #15803d; }
+.lv-status-pill.pending { background: #fef3c7; color: #92400e; }
+
+.lv-item-left h4 { font-size: 1.1rem; color: #1e293b; margin-bottom: 4px; }
+.lv-item-left p { font-size: 0.9rem; color: #64748b; }
+
+@media (max-width: 1024px) { .lv-grid { grid-template-columns: 1fr; } }
