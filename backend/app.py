@@ -342,10 +342,25 @@ def delete_notice(id):
 # ==========================================
 if __name__ == '__main__':
     with app.app_context():
+        # This creates your .db files on the Render server
         db.create_all()
+        
+        # This ensures your default admin exists every time the app starts
         if not AdminUser.query.filter_by(username='admin').first():
-            admin = AdminUser(username='admin', name='Super Admin', role='Super_Admin')
+            admin = AdminUser(
+                username='admin', 
+                name='Super Admin', 
+                role='Super_Admin',
+                email='admin@gmail.com' # Added to match your model
+            )
             admin.set_password('admin123')
             db.session.add(admin)
             db.session.commit()
-    app.run(debug=True, port=5000)
+            print("Default Admin Created: admin | admin123")
+
+    # Render uses the 'PORT' environment variable
+    # We fall back to 5001 if running locally
+    port = int(os.environ.get("PORT", 5001))
+    
+    # debug=False is safer for production, but debug=True works for hackathons
+    app.run(host='0.0.0.0', port=port, debug=True)
