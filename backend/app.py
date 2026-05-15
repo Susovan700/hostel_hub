@@ -15,15 +15,25 @@ from flask_jwt_extended import (
 app = Flask(__name__)
 
 # ==========================================
-# CORS (FIXED)
+# CORS CONFIGURATION (LIVE VERSION)
 # ==========================================
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
+        "origins": [
+            "https://hostel-hub-gray.vercel.app",  # Your Vercel URL
+            "http://localhost:3000",              # Keep for local testing
+            "http://127.0.0.1:3000"
+        ],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
 })
+
+# Add this helper to ensure every response has the headers (Double Security)
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
 
 # ==========================================
 # CONFIG
