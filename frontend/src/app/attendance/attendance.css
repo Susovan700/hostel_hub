@@ -20,6 +20,7 @@
   padding: 40px;
 }
 
+/* HEADER SECTION */
 .at-header {
   margin-bottom: 30px;
 }
@@ -48,12 +49,15 @@
   border-radius: 24px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .at-hero-card {
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
-  display: flex;
+  flex-direction: row; /* Overriding default column for hero */
   align-items: center;
   gap: 25px;
   border: none;
@@ -95,13 +99,78 @@
 .at-absent-val { color: #ef4444; }
 .at-sub { font-size: 0.85rem; color: #64748b; font-weight: 600; }
 
-/* TABLE LOG */
+/* PUNCH-IN SECTION (MODIFIED FOR CENTERED LOOK) */
+.at-card-center {
+  background: white;
+  padding: 50px;
+  border-radius: 28px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+.at-clock {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 25px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -2px;
+}
+
+.at-punch-btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 0 12px #eff6ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.at-punch-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  background: #1d4ed8;
+  box-shadow: 0 0 0 20px #dbeafe;
+}
+
+.at-punch-btn.success {
+  background: #22c55e;
+  box-shadow: 0 0 0 12px #f0fdf4;
+  cursor: default;
+}
+
+.at-punch-btn:disabled {
+  opacity: 0.8;
+}
+
+.at-success-msg {
+  margin-top: 30px;
+  color: #16a34a;
+  font-weight: 700;
+  background: #f0fdf4;
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* LOG TABLE SECTION */
 .at-log-container {
   background: white;
   border-radius: 28px;
   padding: 30px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  margin-top: 20px;
 }
 
 .at-log-header {
@@ -119,7 +188,10 @@
   font-weight: 700;
   color: #475569;
   cursor: pointer;
+  transition: 0.2s;
 }
+
+.at-filter-btn:hover { background: #e2e8f0; }
 
 .at-table-responsive {
   width: 100%;
@@ -136,7 +208,7 @@
   padding: 18px;
   border-bottom: 2px solid #f1f5f9;
   color: #94a3b8;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -159,7 +231,10 @@
 .at-badge.present { background: #dcfce7; color: #15803d; }
 .at-badge.absent { background: #fee2e2; color: #ef4444; }
 
-/* RESPONSIVE */
+/* RESPONSIVE LOGIC */
 @media (max-width: 1024px) {
   .at-stats-row { grid-template-columns: 1fr; }
+  .at-card-center { padding: 30px; }
+  .at-clock { font-size: 2.5rem; }
+  .at-punch-btn { width: 160px; height: 160px; }
 }

@@ -2,18 +2,46 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { apiRequest } from '../services/api.js';
 import "./login.css";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [role, setRole] = useState(null); 
+  const [role, setRole] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const endpoint = role === 'Admin' ? '/admin/login' : '/student/login';
+      const body = role === 'Admin'
+        ? { username: email, password }
+        : { email, password };
+
+      const data = await apiRequest(endpoint, "POST", body);
+
+      // ── Save everything from the response ──────────────────────────
+      localStorage.setItem("token",      data.access_token);
+      localStorage.setItem("userRole",   data.role        || "");
+      localStorage.setItem("userName",   data.name        || "");
+      localStorage.setItem("userEmail",  data.email       || "");
+      localStorage.setItem("userPhone",  data.phone       || "");
+      localStorage.setItem("username",   data.username    || "");
+      localStorage.setItem("roomNumber", data.room        || "");
+
+      router.push('/dashboard');
+    } catch (err) {
+      alert(err.message || "Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="lg-auth-container">
-      
-      {/* INTERNAL VIRTUAL NAVBAR */}
       <nav className="lg-vnb-nav">
         <div className="lg-vnb-logo" onClick={() => router.push('/')}>
           Hostel<span>Hub</span>
@@ -36,7 +64,7 @@ export default function LoginPage() {
               <div className="lg-role-icon">🎓</div>
               <div className="lg-role-text">
                 <h3>Student Portal</h3>
-                <p>View meals & attendance</p>
+                <p>View meals &amp; attendance</p>
               </div>
             </div>
             <div className="lg-role-card" onClick={() => setRole('Admin')}>
@@ -48,16 +76,30 @@ export default function LoginPage() {
             </div>
           </div>
         ) : (
-          <form className="lg-form" onSubmit={(e) => { e.preventDefault(); router.push('/dashboard'); }}>
+          <form className="lg-form" onSubmit={handleLogin}>
             <div className="lg-input-group">
-              <label>Email Address</label>
-              <input type="email" placeholder="name@university.edu" required />
+              <label>{role === 'Admin' ? 'Username' : 'Email Address'}</label>
+              <input
+                type={role === 'Admin' ? 'text' : 'email'}
+                placeholder={role === 'Admin' ? 'admin_username' : 'name@university.edu'}
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="lg-input-group">
               <label>Password</label>
-              <input type="password" placeholder="••••••••" required />
+              <input
+                type="password"
+                placeholder="••••••••"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <button type="submit" className="lg-submit-btn">Sign In</button>
+            <button type="submit" className="lg-submit-btn" disabled={loading}>
+              {loading ? "Signing in…" : "Sign In"}
+            </button>
             <button type="button" className="lg-back-link" onClick={() => setRole(null)}>
               ← Back to role selection
             </button>
